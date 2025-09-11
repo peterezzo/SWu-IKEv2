@@ -1478,12 +1478,8 @@ class swu():
             #ipv6_address_identifier = 'fe80::' + ':'.join(self.ipv6_address_list[0].split(':')[4:8])
             ipv6_address_identifier = self.ipv6_address_list[0]
             self.exec_in_netns("ip -6 addr add " + ipv6_address_identifier + "/64 dev " + self.tun_device)
-            #self.exec_in_netns("route -A inet6 add ::/1 dev " + self.tun_device)
-            #self.exec_in_netns("route -A inet6 add 8000::/1 dev " + self.tun_device)
-            self.exec_in_netns("ip -6 route add 2001:4888::/32 dev " + self.tun_device)
-            self.exec_in_netns("ip -6 route add 2600:1000::/28 dev " + self.tun_device)
-            self.exec_in_netns("ip -6 route add 2600:1010::/29 dev " + self.tun_device)
-            self.exec_in_netns("ip -6 route add 2607:f160::/32 dev " + self.tun_device)
+            self.exec_in_netns("route -A inet6 add ::/1 dev " + self.tun_device)
+            self.exec_in_netns("route -A inet6 add 8000::/1 dev " + self.tun_device)
         
         
         if self.dns_address_list != [] or self.dnsv6_address_list != []:
